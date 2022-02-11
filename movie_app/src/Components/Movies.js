@@ -99,7 +99,7 @@ export default class Movies extends Component {
                                             {
                                                 this.state.hover == movieObj.id &&
                                                 <div className="button-wrapper" style={{display:'flex',width:'100%',justifyContent:'center'}}>
-                                                    <a href="#" className="btn btn-primary movies-btn" onClick={()=>this.handleFavourites(movieObj)}>{this.state.favourites.includes(movieObj.id)?"Remove" : "Add to Favourite"}</a>
+                                                    <a className="btn btn-primary movies-btn" onClick={()=>this.handleFavourites(movieObj)}>{this.state.favourites.includes(movieObj.id)?"Remove" : "Add to Favourite"}</a>
                                                 </div>
                                             }
                                             
