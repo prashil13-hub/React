@@ -121,5 +121,11 @@
   object-fit: cover;
 }
 
-
+/* ----------------------------Favourites---------------------------------- */
+.favourites-generes{
+  padding: 3rem;
+}
+.favourites-table{
+  padding: 3rem;
+}
 
