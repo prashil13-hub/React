@@ -24,7 +24,6 @@ function App() {
       {/* <Ue3/> */}
       
       {/* Context API */}
-
       <button onClick={()=>setTheme(!theme)}>Change Theme</button>
       <Navbar/>
       <Parent1/>
