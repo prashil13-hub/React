@@ -1,10 +1,12 @@
 import './App.css';
 import FireAuth from './Component/FireAuth';
+import Firebase from './Component/Firebase';
 
 function App() {
     return (
       <div>
-        <FireAuth/>
+        {/* <FireAuth/> */}
+        <Firebase/>
       </div>
     );
 }
