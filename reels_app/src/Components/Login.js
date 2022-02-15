@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useContext,useState } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -14,14 +15,15 @@ import img2 from '../Assets/img2.jpg'
 import img3 from '../Assets/img3.jpg'
 import img4 from '../Assets/img4.jpg'
 import bg from '../Assets/instaLogin.png'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext,Image } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-
+import { AuthContext } from '../Context/AuthContext';
 
 
 export default function Login() {
-
+    const store = useContext(AuthContext);
+    // console.log(store);
     const userStyle = makeStyles({
         text1:{
             color:'gray',
@@ -37,6 +39,28 @@ export default function Login() {
         }
     })
     const classes = userStyle();
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState('');
+    const [error,setError] = useState('');
+    const [loading,setLoading] = useState(false)
+    const history = useHistory();
+    const {login} = useContext(AuthContext);
+
+    const handleClick = async()=>{
+        try{
+            setError('');
+            setLoading(true);
+            let res = await login(email,password);
+            setLoading(false);
+            history.push('/')
+        }catch(err){
+            setError(err);
+            setTimeout(()=>{
+                setError('');
+            },2000)
+            setLoading(false)
+        }
+    }
     return (
         <div className='loginWrapper'>
 
@@ -70,17 +94,17 @@ export default function Login() {
                         <div className='insta-logo'>
                             <img className='insta-logo-img' src={insta}/>
                         </div>
-                        {true && <Alert severity="error">This is an error alert — check it out!</Alert>}
+                        {error!='' && <Alert severity="error">{error}</Alert>}
 
-                        <TextField id="outlined-basic" label="Email" variant="outlined" fullWidth={true} margin="dense" size="small"/>
-                        <TextField id="outlined-basic" label="Password" variant="outlined" fullWidth={true} margin="dense" size="small"/>
+                        <TextField id="outlined-basic" label="Email" variant="outlined" fullWidth={true} margin="dense" size="small" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                        <TextField id="outlined-basic" label="Password" variant="outlined" fullWidth={true} margin="dense" size="small" value={password} onChange={(e)=>setPassword(e.target.value)}/>
                         <Typography className={classes.text2} color="primary" variant="subtitle1" >
                             Forgot Password
                         </Typography>
 
                     </CardContent>
                     <CardActions>
-                        <Button color="primary" fullWidth={true} variant="contained" >Login</Button>
+                        <Button color="primary" fullWidth={true} variant="contained" onClick={handleClick} disabled={loading}>Login</Button>
                     </CardActions>
                 </Card>
                 <Card variant="outlined" className={classes.card2}>
