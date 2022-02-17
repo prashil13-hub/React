@@ -1,10 +1,14 @@
 .video-container{
+    margin: 2% auto;
     height: 80vh;
+    width: 60%;
     border-radius: 20px;
     background-color: white;
     overflow: scroll;
     scroll-snap-type: y mandatory;
     scrollbar-width: none;
+    border: 1px solid rgb(61, 61, 61);
+
 }
 .video-container::-webkit-scrollbar{
     display: none;
@@ -14,7 +18,7 @@
 }
 .fa{
     position: absolute;
-    bottom: 8%;
+    top: 5%;
     left: 5%;
 }
 .fa h4{
@@ -23,8 +27,38 @@
 }
 .like-icon{
     position: absolute;
-    bottom: 3%;
+    bottom: 12%;
     left: 6%;
 }
+.char-styling{
+    position: absolute;
+    bottom: 12.5%;
+    left: 12%;
+    cursor: pointer;
+}
+.modal-container{
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+.video-container-modal{
+    height: 100%;
+    width: 50%;
+    /* border: 2px solid red; */
+    padding: 2rem;
+}
+.comment-container{
+    height: 100%;
+    width: 50%;
+
+}
+.modal-video{
+    width: 100%;
+    margin: 30% 0;
+}
+.card1{
+    height: 64vh;
+}
+
 
 
