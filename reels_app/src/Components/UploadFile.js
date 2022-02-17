@@ -73,7 +73,7 @@ function UploadFile(props) {
         }
     }
   return (
-    <div>
+    <div style={{marginTop:'5rem'}}>
         {
             error!=''?<Alert severity="error">T{error}</Alert> :
             <>

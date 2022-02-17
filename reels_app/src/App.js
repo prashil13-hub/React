@@ -9,6 +9,7 @@ import PrivateRoute from './Components/PrivateRoute';
 function App() {
   return (
     <BrowserRouter>
+    
       <AuthProvider>
         <Switch>
           <Route path="/login" component={Login}/>
