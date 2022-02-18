@@ -26,8 +26,8 @@ import ExploreIcon from '@mui/icons-material/Explore';
 import Avatar from '@mui/material/Avatar';
 
 
-
 export default function Navbar({userData}) {
+  // console.log(userData)
   const useStyles = makeStyles({
     appb:{
         background : 'white'
@@ -40,8 +40,6 @@ export default function Navbar({userData}) {
   const history = useHistory();
   const {logout} = React.useContext(AuthContext)
   const classes = useStyles()
-
-
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -60,10 +58,11 @@ export default function Navbar({userData}) {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-
+  // console.log(userData.userId)
   const handleProfile = ()=>{
-    history.push(`/profile/${userData.uid}`)
+    history.push(`/profile/${userData.userId}`)
   }
+
   const handleLogout = async()=>{
     await logout();
     history.push('/login')
